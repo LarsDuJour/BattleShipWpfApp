@@ -64,7 +64,7 @@ namespace BattleShipWpfApp
 
         private RoutedEventHandler gridClicked(int i, int j)
         {
-            return (btn, e) => buttonArray[i, j].Content = "ok";
+            return (btn, e) => buttonArray[i, j].Content = gridArray[i,j];
         }
             }
 }
