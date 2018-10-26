@@ -50,6 +50,7 @@ namespace BattleShipWpfApp
                     Button btn = new Button();
                     btn.Click += gridClicked(i, j);
                     btn.Content = "knap?";
+                    btn.Background = Brushes.Aquamarine;
                     buttonArray[i, j] = btn;
                     btn.Margin = new Thickness(2, 2, 2, 2);
                     ViewGrid.Children.Add(btn);
@@ -64,7 +65,21 @@ namespace BattleShipWpfApp
 
         private RoutedEventHandler gridClicked(int i, int j)
         {
-            return (btn, e) => buttonArray[i, j].Content = "ok";
+
+            if (gridArray[i, j] == "ship")
+            {
+                //its a hit!
+
+                //buttonArray[i, j].Background = Brushes.Red;
+                return (btn, e) => buttonArray[i, j].Content = "HIT!";
+            }
+            else
+            {
+                //its a miss!
+                //buttonArray[i, j].Background = Brushes.Blue;
+                return (btn, e) => buttonArray[i, j].Content = "miss";
+            }
+
         }
             }
 }
