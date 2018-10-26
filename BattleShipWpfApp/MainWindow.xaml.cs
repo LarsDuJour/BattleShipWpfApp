@@ -69,7 +69,6 @@ namespace BattleShipWpfApp
             if (gridArray[i, j] == "ship")
             {
                 //its a hit!
-
                 //buttonArray[i, j].Background = Brushes.Red;
                 return (btn, e) => buttonArray[i, j].Content = "HIT!";
             }
@@ -77,9 +76,13 @@ namespace BattleShipWpfApp
             {
                 //its a miss!
                 //buttonArray[i, j].Background = Brushes.Blue;
+                
+
                 return (btn, e) => buttonArray[i, j].Content = "miss";
             }
 
         }
+
+
             }
 }
