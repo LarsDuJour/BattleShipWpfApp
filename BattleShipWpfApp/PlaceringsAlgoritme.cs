@@ -8,7 +8,7 @@ namespace BattleShipWpfApp
 {
     class PlaceringsAlgoritme
     {
-
+        
         private static Random rnd = new Random();
 
 
