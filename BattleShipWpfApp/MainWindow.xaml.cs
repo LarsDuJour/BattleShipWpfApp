@@ -24,6 +24,7 @@ namespace BattleShipWpfApp
         public static int gridSize = 10;
         String[,] gridArray;
         Button[,] buttonArray;
+        public static int MissCount = 0;
 
         public MainWindow()
         {
@@ -90,6 +91,7 @@ namespace BattleShipWpfApp
 
         private RoutedEventHandler gridClicked(int i, int j)
         {
+
             if (gridArray[i, j].Equals("ship"))
             {
                 //its a hit!
@@ -98,9 +100,10 @@ namespace BattleShipWpfApp
             }
             else
             {
+                MissCount++;
                 //its a miss!
                 //buttonArray[i, j].Background = Brushes.Blue;
-                
+
 
                 return (btn, e) => buttonArray[i, j].Content = "miss";
             }
