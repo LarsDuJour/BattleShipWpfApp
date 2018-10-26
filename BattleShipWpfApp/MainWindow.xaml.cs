@@ -21,7 +21,7 @@ namespace BattleShipWpfApp
     public partial class MainWindow : Window
     {
 
-        int gridSize = 10;
+        public static int gridSize = 10;
         String[,] gridArray;
         Button[,] buttonArray;
 
@@ -56,9 +56,6 @@ namespace BattleShipWpfApp
                     ViewGrid.Children.Add(btn);
                     Grid.SetColumn(btn, i);
                     Grid.SetRow(btn, j);
-
-
-
                 }
             }
 
