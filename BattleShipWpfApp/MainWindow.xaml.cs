@@ -61,6 +61,13 @@ namespace BattleShipWpfApp
 
                 }
             }
+
+            gridArray = PlaceringsAlgoritme.Placering(2, gridArray);
+            gridArray = PlaceringsAlgoritme.Placering(3, gridArray);
+            gridArray = PlaceringsAlgoritme.Placering(3, gridArray);
+            gridArray = PlaceringsAlgoritme.Placering(4, gridArray);
+            gridArray = PlaceringsAlgoritme.Placering(5, gridArray);
+
         }
 
         private RoutedEventHandler gridClicked(int i, int j)
