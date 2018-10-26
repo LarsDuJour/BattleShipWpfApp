@@ -47,6 +47,20 @@ namespace BattleShipWpfApp
             {
                 for (int j = 0; j < gridSize; j++)
                 {
+                    gridArray[i, j] = "";
+                }
+            }
+
+            gridArray = PlaceringsAlgoritme.Placering(2, gridArray);
+            gridArray = PlaceringsAlgoritme.Placering(3, gridArray);
+            gridArray = PlaceringsAlgoritme.Placering(3, gridArray);
+            gridArray = PlaceringsAlgoritme.Placering(4, gridArray);
+            gridArray = PlaceringsAlgoritme.Placering(5, gridArray);
+
+            for (int i = 0; i < gridSize; i++)
+            {
+                for (int j = 0; j < gridSize; j++)
+                {
                     Button btn = new Button();
                     btn.Click += gridClicked(i, j);
                     btn.Content = "knap?";
@@ -59,19 +73,7 @@ namespace BattleShipWpfApp
                 }
             }
 
-            for (int i = 0; i < gridSize; i++)
-            {
-                for (int j = 0; j < gridSize; j++)
-                {
-                    gridArray[i, j] = "";
-                }
-            }
             
-            gridArray = PlaceringsAlgoritme.Placering(2, gridArray);
-            gridArray = PlaceringsAlgoritme.Placering(3, gridArray);
-            gridArray = PlaceringsAlgoritme.Placering(3, gridArray);
-            gridArray = PlaceringsAlgoritme.Placering(4, gridArray);
-            gridArray = PlaceringsAlgoritme.Placering(5, gridArray);
             reveal();
         }
 
@@ -88,7 +90,7 @@ namespace BattleShipWpfApp
 
         private RoutedEventHandler gridClicked(int i, int j)
         {
-            if (gridArray[i, j] == "ship")
+            if (gridArray[i, j].Equals("ship"))
             {
                 //its a hit!
                 //buttonArray[i, j].Background = Brushes.Red;
