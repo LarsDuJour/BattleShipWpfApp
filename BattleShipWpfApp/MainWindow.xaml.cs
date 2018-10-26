@@ -96,21 +96,24 @@ namespace BattleShipWpfApp
         private RoutedEventHandler gridClicked(int i, int j)
         {
 
-            if (gridArray[i, j].Equals("ship"))
+            //det her er faktisk bare en utroligt lang lambda expression på en linje
+            return (btn, e) =>
             {
-                //its a hit!
-                //buttonArray[i, j].Background = Brushes.Red;
-                return (btn, e) => buttonArray[i, j].Content = "HIT!";
-            }
-            else
-            {
-                MissCount++;
-                //its a miss!
-                //buttonArray[i, j].Background = Brushes.Blue;
 
-
-                return (btn, e) => buttonArray[i, j].Content = "miss";
-            }
+                if (gridArray[i, j].Equals("ship"))
+                {
+                    //its a hit!
+                    buttonArray[i, j].Background = Brushes.Red;
+                    buttonArray[i, j].Content = "HIT!";
+                }
+                else
+                {
+                    MissCount++;
+                    //its a miss!
+                    buttonArray[i, j].Background = Brushes.Blue;
+                    buttonArray[i, j].Content = "miss";
+                }
+            };
 
         }
 
