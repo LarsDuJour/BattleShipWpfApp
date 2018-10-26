@@ -26,16 +26,28 @@ namespace BattleShipWpfApp
         Button[,] buttonArray;
         public static int MissCount = 0;
 
+
         public MainWindow()
         {
 
             InitializeComponent();
             gridArray = new String[gridSize, gridSize];
             buttonArray = new Button[gridSize, gridSize];
-            TextBlock numberOfMissedHits = new TextBlock();
-            numberOfMissedHits.Text = "Du har missed 0 gange";
-            numberOfMissedHits.Margin = new Thickness(2, 2, 2, 2);
-            ViewGrid.Children.Add(numberOfMissedHits);
+
+
+
+            TextBlock numberOfMissedHits1 = new TextBlock();
+            numberOfMissedHits1.Text = "Misses:";
+            ViewGrid.Children.Add(numberOfMissedHits1);
+            Grid.SetColumn(numberOfMissedHits1, 4);
+            Grid.SetRow(numberOfMissedHits1, 11);
+
+            //tal block block
+            TextBlock numberOfMissedHits2 = new TextBlock();
+            numberOfMissedHits2.Text = MissCount.ToString();
+            ViewGrid.Children.Add(numberOfMissedHits2);
+            Grid.SetColumn(numberOfMissedHits2, 5);
+            Grid.SetRow(numberOfMissedHits2, 11);
 
             for (int i = 0; i < gridSize+1; i++)
             {
@@ -121,6 +133,18 @@ namespace BattleShipWpfApp
             };
         }
 
+
+        private RoutedEventHandler reset()
+        { 
+            /// TODO: Skriv mig!
+            return (btnReset, e) =>
+            {
+                //skriv din reset kode her
+            };
+        }
+
+
+
         private RoutedEventHandler gridClicked(int i, int j)
         {
 
@@ -137,6 +161,8 @@ namespace BattleShipWpfApp
                 else
                 {
                     MissCount++;
+                    MainWindow.numberOfMissedHits2.Text = MissCount.ToString();
+
                     //its a miss!
                     buttonArray[i, j].Background = Brushes.Blue;
                     buttonArray[i, j].Content = "miss";
@@ -144,6 +170,7 @@ namespace BattleShipWpfApp
             };
 
         }
+
 
 
             }
