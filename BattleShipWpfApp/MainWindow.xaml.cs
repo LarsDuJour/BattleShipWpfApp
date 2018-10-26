@@ -31,6 +31,10 @@ namespace BattleShipWpfApp
             InitializeComponent();
             gridArray = new String[gridSize, gridSize];
             buttonArray = new Button[gridSize, gridSize];
+            TextBlock numberOfMissedHits = new TextBlock();
+            numberOfMissedHits.Text = "Du har missed 0 gange";
+            numberOfMissedHits.Margin = new Thickness(2, 2, 2, 2);
+            ViewGrid.Children.Add(numberOfMissedHits);
 
             for (int i = 0; i < gridSize; i++)
             {
