@@ -33,8 +33,8 @@ namespace BattleShipWpfApp
             while (true)
             {
                 bool kanPlaceres = true;
-                int horisontalt = rnd.Next(0, 9-shipLength);
-                int vertikalt = rnd.Next(0, 9);
+                int horisontalt = rnd.Next(0, MainWindow.gridSize-shipLength-1);
+                int vertikalt = rnd.Next(0, MainWindow.gridSize);
 
                 for (int i = 0; i < shipLength; i++)
                 {
@@ -63,8 +63,8 @@ namespace BattleShipWpfApp
             while (true)
             {
                 bool kanPlaceres = true;
-                int horisontalt = rnd.Next(0, 9);
-                int vertikalt = rnd.Next(0, 9- shipLength);
+                int horisontalt = rnd.Next(0, MainWindow.gridSize);
+                int vertikalt = rnd.Next(0, MainWindow.gridSize-shipLength-1);
 
                 for (int i = 0; i < shipLength; i++)
                 {
