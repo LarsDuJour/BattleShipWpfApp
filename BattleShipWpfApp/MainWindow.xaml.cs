@@ -37,7 +37,7 @@ namespace BattleShipWpfApp
             numberOfMissedHits.Margin = new Thickness(2, 2, 2, 2);
             ViewGrid.Children.Add(numberOfMissedHits);
 
-            for (int i = 0; i < gridSize; i++)
+            for (int i = 0; i < gridSize+1; i++)
             {
                 RowDefinition rd = new RowDefinition();
                 rd.Height = new GridLength(50, GridUnitType.Pixel);
@@ -78,19 +78,47 @@ namespace BattleShipWpfApp
                 }
             }
 
-            
-            reveal();
+            //reset button
+            Button btnReset = new Button();
+            btnReset.Content = "Reset";
+            //btnReset.Click = Reset(); doesnt exist yet
+            btnReset.Width = 50;
+            btnReset.Height = 50;
+            btnReset.Margin = new Thickness(2, 2, 2, 2);
+            ViewGrid.Children.Add(btnReset);
+            Grid.SetColumn(btnReset, 0);
+            Grid.SetRow(btnReset, 11);
+
+            //reveal button
+            Button btnReveal = new Button();
+            btnReveal.Content = "Reveal";
+            btnReveal.Click += reveal();
+            btnReveal.Width = 50;
+            btnReveal.Height = 50;
+            btnReveal.Margin = new Thickness(2, 2, 2, 2);
+            ViewGrid.Children.Add(btnReveal);
+            Grid.SetColumn(btnReveal, 1);
+            Grid.SetRow(btnReveal, 11);
+
+
+
+
+
+
         }
 
-        private void reveal()
+        private RoutedEventHandler reveal()
         {
-            for (int i = 0; i < gridSize; i++)
+            return (btnReveal, e) =>
             {
-                for (int j = 0; j < gridSize; j++)
+                for (int i = 0; i < gridSize; i++)
                 {
-                    buttonArray[i, j].Content = gridArray[i, j];
+                    for (int j = 0; j < gridSize; j++)
+                    {
+                        buttonArray[i, j].Content = gridArray[i, j];
+                    }
                 }
-            }
+            };
         }
 
         private RoutedEventHandler gridClicked(int i, int j)
