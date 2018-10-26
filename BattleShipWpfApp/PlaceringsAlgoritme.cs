@@ -14,19 +14,22 @@ namespace BattleShipWpfApp
 
         public static string[,] Placering(int shipLength, string[,] grid)
         {
-            int horisontalVertikalRnd = rnd.Next(0, 1);
+            int horisontalVertikalRnd = rnd.Next(1, 10);
 
-            if (horisontalVertikalRnd == 0) grid = PlacerHorisontalt(shipLength, grid);
-
-            else grid = PlacerVertikalt(shipLength, grid);
+            if (horisontalVertikalRnd < 6)
+            {
+                grid = PlacerHorisontalt(shipLength, grid);
+            }
+            else
+            {
+                grid = PlacerVertikalt(shipLength, grid);
+            }
 
             return grid;
         }
 
         private static string[,] PlacerHorisontalt(int shipLength, string[,] grid)
         {
-            
-
             while (true)
             {
                 bool kanPlaceres = true;
@@ -57,8 +60,6 @@ namespace BattleShipWpfApp
 
         private static string[,] PlacerVertikalt(int shipLength, string[,] grid)
         {
-            
-
             while (true)
             {
                 bool kanPlaceres = true;
