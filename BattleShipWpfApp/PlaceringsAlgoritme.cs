@@ -25,16 +25,17 @@ namespace BattleShipWpfApp
 
         private static string[,] PlacerHorisontalt(int shipLength, string[,] grid)
         {
-            bool kanPlaceres = true;
+            
 
             while (true)
-            { 
+            {
+                bool kanPlaceres = true;
                 int horisontalt = rnd.Next(0, 9-shipLength);
                 int vertikalt = rnd.Next(0, 9);
 
                 for (int i = 0; i < shipLength; i++)
                 {
-                    if (grid[horisontalt+i,vertikalt] != "")
+                    if (!grid[horisontalt+i,vertikalt].Equals(""))
                     {
                         kanPlaceres = false;
                     }
@@ -56,16 +57,17 @@ namespace BattleShipWpfApp
 
         private static string[,] PlacerVertikalt(int shipLength, string[,] grid)
         {
-            bool kanPlaceres = true;
+            
 
             while (true)
-            { 
+            {
+                bool kanPlaceres = true;
                 int horisontalt = rnd.Next(0, 9);
                 int vertikalt = rnd.Next(0, 9- shipLength);
 
                 for (int i = 0; i < shipLength; i++)
                 {
-                    if (grid[horisontalt,vertikalt+i] != "")
+                    if (!grid[horisontalt,vertikalt+i].Equals(""))
                     {
                         kanPlaceres = false;
                     }
