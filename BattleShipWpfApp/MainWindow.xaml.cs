@@ -25,6 +25,7 @@ namespace BattleShipWpfApp
         String[,] gridArray;
         Button[,] buttonArray;
         public static int MissCount = 0;
+        private TextBlock numberOfMissedHits2;
 
 
         public MainWindow()
@@ -43,7 +44,7 @@ namespace BattleShipWpfApp
             Grid.SetRow(numberOfMissedHits1, 11);
 
             //tal block block
-            TextBlock numberOfMissedHits2 = new TextBlock();
+            numberOfMissedHits2 = new TextBlock();
             numberOfMissedHits2.Text = MissCount.ToString();
             ViewGrid.Children.Add(numberOfMissedHits2);
             Grid.SetColumn(numberOfMissedHits2, 5);
@@ -161,7 +162,7 @@ namespace BattleShipWpfApp
                 else
                 {
                     MissCount++;
-                    MainWindow.numberOfMissedHits2.Text = MissCount.ToString();
+                    numberOfMissedHits2.Text = MissCount.ToString();
 
                     //its a miss!
                     buttonArray[i, j].Background = Brushes.Blue;
