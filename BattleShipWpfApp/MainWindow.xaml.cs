@@ -50,7 +50,7 @@ namespace BattleShipWpfApp
             Grid.SetColumn(numberOfMissedHits2, 5);
             Grid.SetRow(numberOfMissedHits2, 11);
 
-            for (int i = 0; i < gridSize+1; i++)
+            for (int i = 0; i < gridSize + 1; i++)
             {
                 RowDefinition rd = new RowDefinition();
                 rd.Height = new GridLength(50, GridUnitType.Pixel);
@@ -61,19 +61,8 @@ namespace BattleShipWpfApp
                 ViewGrid.ColumnDefinitions.Add(cd);
             }
 
-            for (int i = 0; i < gridSize; i++)
-            {
-                for (int j = 0; j < gridSize; j++)
-                {
-                    gridArray[i, j] = "";
-                }
-            }
-
-            gridArray = PlaceringsAlgoritme.Placering(2, gridArray);
-            gridArray = PlaceringsAlgoritme.Placering(3, gridArray);
-            gridArray = PlaceringsAlgoritme.Placering(3, gridArray);
-            gridArray = PlaceringsAlgoritme.Placering(4, gridArray);
-            gridArray = PlaceringsAlgoritme.Placering(5, gridArray);
+            NillsGridArray();
+            PutShipsInGridArray();
 
             for (int i = 0; i < gridSize; i++)
             {
@@ -94,7 +83,7 @@ namespace BattleShipWpfApp
             //reset button
             Button btnReset = new Button();
             btnReset.Content = "Reset";
-            //btnReset.Click = Reset(); doesnt exist yet
+            btnReset.Click += Reset();
             btnReset.Width = 50;
             btnReset.Height = 50;
             btnReset.Margin = new Thickness(2, 2, 2, 2);
@@ -120,6 +109,26 @@ namespace BattleShipWpfApp
 
         }
 
+        private void PutShipsInGridArray()
+        {
+            gridArray = PlaceringsAlgoritme.Placering(2, gridArray);
+            gridArray = PlaceringsAlgoritme.Placering(3, gridArray);
+            gridArray = PlaceringsAlgoritme.Placering(3, gridArray);
+            gridArray = PlaceringsAlgoritme.Placering(4, gridArray);
+            gridArray = PlaceringsAlgoritme.Placering(5, gridArray);
+        }
+
+        private void NillsGridArray()
+        {
+            for (int i = 0; i < gridSize; i++)
+            {
+                for (int j = 0; j < gridSize; j++)
+                {
+                    gridArray[i, j] = "";
+                }
+            }
+        }
+
         private RoutedEventHandler reveal()
         {
             return (btnReveal, e) =>
@@ -135,12 +144,26 @@ namespace BattleShipWpfApp
         }
 
 
-        private RoutedEventHandler reset()
+        private RoutedEventHandler Reset()
         { 
             /// TODO: Skriv mig!
             return (btnReset, e) =>
             {
                 //skriv din reset kode her
+                MissCount = 0;
+                numberOfMissedHits2.Text = MissCount.ToString();
+                NillsGridArray();
+                PutShipsInGridArray();
+
+                //Reset buttons
+                for (int i = 0; i < gridSize; i++)
+                {
+                    for (int j = 0; j < gridSize; j++)
+                    {
+                        buttonArray[i, j].Content = "knap?";
+                        buttonArray[i, j].Background = Brushes.Aquamarine;
+                    }
+                }
             };
         }
 
