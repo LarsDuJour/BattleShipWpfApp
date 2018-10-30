@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Drawing;
 
 namespace BattleShipWpfApp
 {
@@ -26,6 +27,8 @@ namespace BattleShipWpfApp
         Button[,] buttonArray;
         public static int MissCount = 0;
         private TextBlock numberOfMissedHits2;
+        private int columnOfMouse = 0;
+        private int rowOfMouse = 0;
 
 
         public MainWindow()
@@ -102,11 +105,6 @@ namespace BattleShipWpfApp
             Grid.SetColumn(btnReveal, 1);
             Grid.SetRow(btnReveal, 11);
 
-
-
-
-
-
         }
 
         private void PutShipsInGridArray()
@@ -146,7 +144,6 @@ namespace BattleShipWpfApp
 
         private RoutedEventHandler Reset()
         { 
-            /// TODO: Skriv mig!
             return (btnReset, e) =>
             {
                 //skriv din reset kode her
@@ -194,8 +191,6 @@ namespace BattleShipWpfApp
             };
 
         }
-
-
-
-            }
+        
+    }
 }

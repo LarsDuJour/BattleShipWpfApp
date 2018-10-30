@@ -24,7 +24,6 @@ namespace BattleShipWpfApp
             {
                 grid = PlacerVertikalt(shipLength, grid);
             }
-
             return grid;
         }
 
@@ -32,17 +31,10 @@ namespace BattleShipWpfApp
         {
             while (true)
             {
-                bool kanPlaceres = true;
                 int horisontalt = rnd.Next(0, MainWindow.gridSize-shipLength-1);
                 int vertikalt = rnd.Next(0, MainWindow.gridSize);
 
-                for (int i = 0; i < shipLength; i++)
-                {
-                    if (!grid[horisontalt+i,vertikalt].Equals(""))
-                    {
-                        kanPlaceres = false;
-                    }
-                }
+                bool kanPlaceres = FreeSpaceForShipLength(horisontalt, vertikalt, shipLength, 0, true, grid, true);
 
                 if (kanPlaceres)
                 {
@@ -58,21 +50,39 @@ namespace BattleShipWpfApp
             return grid;
         }
 
+        private static bool FreeSpaceForShipLength(int horisontal, int vertical, int shiplength, int counter, bool canBePlaced, string[,] grid, bool horisontalYesNo)
+        {
+            if (horisontalYesNo)
+            {
+                if (!grid[horisontal + counter, vertical].Equals(""))
+                {
+                    canBePlaced = false;
+                }
+            }
+            else
+            {
+                if (!grid[horisontal, vertical + counter].Equals(""))
+                {
+                    canBePlaced = false;
+                }
+            }
+            
+            if (!(counter >= shiplength))
+            {
+                canBePlaced = FreeSpaceForShipLength(horisontal, vertical, shiplength, ++counter, canBePlaced, grid, horisontalYesNo);
+            }
+            return canBePlaced;
+        }
+
         private static string[,] PlacerVertikalt(int shipLength, string[,] grid)
         {
             while (true)
             {
-                bool kanPlaceres = true;
+                
                 int horisontalt = rnd.Next(0, MainWindow.gridSize);
                 int vertikalt = rnd.Next(0, MainWindow.gridSize-shipLength-1);
 
-                for (int i = 0; i < shipLength; i++)
-                {
-                    if (!grid[horisontalt,vertikalt+i].Equals(""))
-                    {
-                        kanPlaceres = false;
-                    }
-                }
+                bool kanPlaceres = FreeSpaceForShipLength(horisontalt, vertikalt, shipLength, 0, true, grid, false);
 
                 if (kanPlaceres)
                 {

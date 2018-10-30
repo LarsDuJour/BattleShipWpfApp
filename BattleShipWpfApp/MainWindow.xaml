@@ -6,9 +6,9 @@
         xmlns:local="clr-namespace:BattleShipWpfApp"
         mc:Ignorable="d"
         Title="MainWindow" Height="650" Width="800">
-    
+
         <StackPanel>
-            <Grid x:Name="ViewGrid" VerticalAlignment="Center" HorizontalAlignment="Center">
+        <Grid x:Name="ViewGrid" VerticalAlignment="Center" HorizontalAlignment="Center" Width="800" Height="650">
 
             </Grid>
         </StackPanel>
